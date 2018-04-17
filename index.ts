@@ -94,6 +94,7 @@ import isEqual from 'lodash.isequal';
   *
   * @param() items - List of items to belong in carousel
   * @param() width - Size of window(view) to show
+  * @param() snapDisabled - Dissable snap
   * @param() $prev - Template for previous button
   * @param() $next - Template for next button
   * @param() $item - Template for the item
@@ -101,6 +102,7 @@ import isEqual from 'lodash.isequal';
 export class Ng2Carouselamos {
   @Input() items = [];
   @Input() width = 500;
+  @Input() snapDisabled;
   @Input() $prev;
   @Input() $next;
   @Input() $item;
@@ -150,6 +152,7 @@ export class Ng2Carouselamos {
   }
 
   snap(elem) {
+    if (this.snapDisabled) return;
     let counter = 0;
     let lastVal = 0;
     for (let i = 0; i < this.items.length; i++) {
